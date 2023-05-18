@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.shortcuts import render
 from django.views import generic
-from .models import Item
+from .models import Item, CATEGORY
 
 
 # Create class-based views
@@ -10,7 +10,8 @@ class MenuList(generic.ListView):
     template_name = "index.html"
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        context = {"meals":"Pizza"}
+        context = super().get_context_data(**kwargs)
+        context["meals"] = CATEGORY
         return context
 
 
