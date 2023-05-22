@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
     <h1>Food App</h1>
-        {% for meal in meals %}
-        <h2>{{ meal.1 }}</h2>
-        {% for row in item_list %}
-            <h3>{{ row.meal }}</h3>
-            <p>{{ row.description }}</p>
-
-        {% endfor %}
-        {% endfor %}
-</body>
-</html>
+        <ul class="list-group list-group-flush">
+            {% for meal in meals %}        
+                <h2 class="pt-5">{{ meal.1 }}</h2>
+                    {% for row in item_list %}
+                        {% if row.category == meal.0 %}
+                            {% if row.status == 0 %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 pb-0">
+                                <a href="{% url 'menu_item' row.pk %}"><h3><del>{{ row.meal }}</del></h3></a>
+                                <span class="badge bg-primary rounded-pill">{{ row.price }}</span>
+                            </li>
+                            <li class="list-group-item pt-0">
+                                <p>{{ row.description }}</p>
+                            </li>
+                            {% else %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 pb-0">
+                                <a href="{% url 'menu_item' row.pk %}"><h3>{{ row.meal }}</h3></a>
+                                <span class="badge bg-primary rounded-pill">{{ row.price }}</span>
+                            </li>
+                            <li class="list-group-item pt-0">
+                                <p>{{ row.description }}</p>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+            {% endfor %}
+        </ul>
+</div>
+{% endblock content %}
