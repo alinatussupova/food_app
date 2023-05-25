@@ -4,5 +4,5 @@
 <p>Users can accept this program through QR code, that I've build specifically for this app.</p>
 <h3><ul>Technologies used:</ul></h3>
 <li>Python (Django, Jinja)</li>
-<li>HTML<li>
+<li>HTML</li>
 <li>SQLite DB</li>
