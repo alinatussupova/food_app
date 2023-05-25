@@ -5,4 +5,5 @@
 <h3><ul>Technologies used:</ul></h3>
 <li>Python (Django, Jinja)</li>
 <li>HTML</li>
+<li>Bootstrap</li>
 <li>SQLite DB</li>
